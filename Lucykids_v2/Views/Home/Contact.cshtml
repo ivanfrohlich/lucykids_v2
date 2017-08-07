@@ -1,17 +1,40 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact Us";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<h2 class="col-sm-offset-1 col-sm-6">@ViewData["Title"].</h2>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<div class="row">
+    <p class="col-sm-offset-1 col-sm-6">If you require any further information please use the form below.</p>
+
+    <div class=" col-sm-offset-2 col-sm-4">
+        <form method="post" action="">
+
+            <div class="riadok">
+                <label for="FirstName" id="firstName">First Name:</label>
+                <input class="" id="firstNameInput" name="FirstName" type="text" />
+            </div>
+            <div class="riadok">
+                <label for="LastName" id="lastName">Last Name:</label>
+                <input class="" id="lastNameInput" name="LastName" />
+            </div>
+            <div class="riadok">
+                <label for="Email" id="email">E-mail:</label>
+                <input id="emailInput" name="Email" type="email" />
+            </div>
+            <div class="riadok">
+                <label for="Comments" id="comments">Comments:</label>
+                <textarea name="Comments" id="commentsTextarea"></textarea>
+            </div>
+            <div class="riadok-btn">
+                <button type="button" id="btn-submit" onclick="alert('Submit button pressed')">
+                    Submit
+                </button>
+                <button type="reset" id="btn-reset" onclick="alert('Reset button presed is form empty?')">
+                    Reset
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

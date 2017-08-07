@@ -12,11 +12,14 @@ using Microsoft.Extensions.Logging;
 using Lucykids_v2.Data;
 using Lucykids_v2.Models;
 using Lucykids_v2.Services;
+using Lucykids_v2.DAL;
+using Lucykids_v2.Infrastructure;
 
 namespace Lucykids_v2
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -24,24 +27,27 @@ namespace Lucykids_v2
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets<Startup>();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
+            //    builder.AddUserSecrets<Startup>();
+            //}
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<StoreDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:StoreProducts:ConnectionString"]));
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration["Data:StoreIdentity:ConnectionString"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -52,6 +58,8 @@ namespace Lucykids_v2
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddTransient<IProductRepository, EFProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +80,6 @@ namespace Lucykids_v2
             }
 
             app.UseStaticFiles();
-
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
@@ -83,6 +90,8 @@ namespace Lucykids_v2
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

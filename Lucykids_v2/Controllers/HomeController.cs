@@ -13,16 +13,31 @@ namespace Lucykids_v2.Controllers
             return View();
         }
 
+       
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "My message from controller.";
 
             return View();
         }
 
+        public IActionResult AboutOurClothes()
+        {
+            return View();
+        }
+
+        public IActionResult OrderingAndDelivery()
+        {
+            return View();
+        }
+
+        public IActionResult Faqs()
+        {
+            return View();
+        }
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "My contact message from controller.";
 
             return View();
         }

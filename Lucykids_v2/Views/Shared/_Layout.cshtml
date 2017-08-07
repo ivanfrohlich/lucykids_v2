@@ -19,27 +19,39 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Lucykids_v2</a>
+    <header class="jumbotron">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar">otazka</span>
+                        <span class="icon-bar">otazka1</span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Lucykids_v2</a>
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
+        </nav>
+
+        <div class="container">
+            @*<nav class="">*@
+                <img src="~/images/lucyKidsLogo.png" id="logo"  />
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="AboutOurClothes">AboutOurClothes</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="OrderingAndDelivery">OrderingAndDelivery</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Faqs">FAQs</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+            @*</nav>*@
         </div>
-    </nav>
+    </header>
     <div class="container body-content">
         @RenderBody()
         <hr />
