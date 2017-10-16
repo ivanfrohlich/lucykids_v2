@@ -12,8 +12,8 @@ namespace Lucykids_v2.Models
 {
     public static class IdentitySeedData
     {
-        const string adminUser = "slovakivo@hotmail.com";
-        const string adminPassword = "miK19$roskop";
+        const string adminUser = "you@yourdomain.com";
+        const string adminPassword = "password";
         const string roleName = "Admin";
 
 
@@ -26,7 +26,7 @@ namespace Lucykids_v2.Models
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
             if (user==null)
             {
-                user = new IdentityUser("slovakivo@hotmail.com");
+                user = new IdentityUser(adminUser);
                 await userManager.CreateAsync(user, adminPassword);
             }
         }
