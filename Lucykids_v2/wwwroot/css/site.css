@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     
 }
 
@@ -60,6 +60,7 @@ textarea {
 .navbar-inverse {
     background-color: #db5c5a !important;
     border-color: #db5c5a;
+    font-size:small;
     }
 
 .navbar-inverse .navbar-nav >li> a , .navbar-inverse .navbar-brand{
@@ -87,6 +88,27 @@ textarea {
 #logo, .navbar-nav{
     float:left;
 }
+
+/*Footer styles*/
+ .footer-bottom{
+    margin-bottom:0px;
+}
+.footer-class {
+    background-color: #db5c5a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 0px;
+    /*position:absolute;
+    bottom:0;
+    left:0;*/
+}
+
+/*.footer-bottom {
+    float: right;
+}*/
+
 
 /* Form styles in Contact us page*/
  
@@ -116,3 +138,49 @@ textarea {
     color:white;
     margin-right:0px;
 }
+
+/*.product-buttons {
+    list-style:none;
+}*/
+.product-buttons-container{
+    /*float:left;
+    padding:20px 40px;*/
+    text-align:center;
+}
+
+/*.productImage{
+    border:1px solid red;
+    width:300px;
+    height:300px;
+}*/
+
+.thumbnail{
+    width:310px;
+    height:400px;
+}
+.thumbnail img{
+    width:100%;
+}
+
+.row .dropdownLists{
+    background-color: grey;
+    padding:10px 5px 10px 5px;
+}
+
+ /*  buttons for showing products by categories */
+.gender-links {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px 40px;
+}
+    .gender-links > a {
+        display: block;
+        padding: 10px 20px;
+        background-color: #4ae3b7;
+        color:white;
+    }
+        .gender-links > a:hover {
+            background-color: #337ab7;
+            text-decoration:none;
+        }
+

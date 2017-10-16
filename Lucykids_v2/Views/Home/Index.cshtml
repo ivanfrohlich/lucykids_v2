@@ -15,7 +15,9 @@
             <div class="carousel-caption" role="option">
                 <p>
                     Preloved clothes
-                    
+                    <a asp-area=""  asp-controller="Products" asp-action="Index"  class="btn btn-default" >
+                        Shop
+                    </a>
                 </p>
             </div>
         </div>
@@ -24,7 +26,7 @@
             <div class="carousel-caption" role="option">
                 <p>
                     Boys Clothes
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                    <a asp-controller="Poducts" asp-action="Index" class="btn btn-default">
                         Shop
                     </a>
                 </p>
@@ -35,7 +37,7 @@
             <div class="carousel-caption" role="option">
                 <p>
                    Girl Clothes
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-default" href="~/Views/Products/Index.cshtml">
                         Shop
                     </a>
                 </p>
@@ -53,7 +55,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3">
+    @*<div class="col-md-3">
         <h2>Application uses</h2>
         <ul>
             <li>Sample pages using ASP.NET Core MVC</li>
@@ -82,5 +84,5 @@
     <div class="col-md-3">
         <h2>Run & Deploy</h2>
        
-    </div>
+    </div>*@
 </div>

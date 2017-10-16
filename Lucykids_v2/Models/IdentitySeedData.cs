@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Lucykids_v2.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,13 @@ namespace Lucykids_v2.Models
 {
     public static class IdentitySeedData
     {
-        private const string adminUser = "Admin";
-        private const string adminPassword = "Heslo123$";
-        public static async void EnsurePopulated(IApplicationBuilder app)
+        const string adminUser = "slovakivo@hotmail.com";
+        const string adminPassword = "miK19$roskop";
+        const string roleName = "Admin";
+
+
+
+    public static async void EnsurePopulated(IApplicationBuilder app)
         {
             UserManager<IdentityUser> userManager = app.ApplicationServices
                 .GetRequiredService<UserManager<IdentityUser>>();
@@ -21,7 +26,7 @@ namespace Lucykids_v2.Models
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
             if (user==null)
             {
-                user = new IdentityUser("Admin");
+                user = new IdentityUser("slovakivo@hotmail.com");
                 await userManager.CreateAsync(user, adminPassword);
             }
         }

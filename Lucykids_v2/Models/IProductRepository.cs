@@ -8,5 +8,8 @@ namespace Lucykids_v2.Models
    public  interface IProductRepository
     {
         IEnumerable<Product> Products { get; }
+        void SaveProduct(Product product);
+        Product DeleteProduct(int productId);
+        Product GetProductById(int productId);
     }
 }

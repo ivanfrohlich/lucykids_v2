@@ -139,11 +139,7 @@ namespace Lucykids_v2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-             var brand = await _context.Brands.SingleOrDefaultAsync(m => m.BrandId == id);
-            //foreach (var p in brand.Products)
-            //{
-            //    p.BrandId = null;
-            //}
+            var brand = await _context.Brands.SingleOrDefaultAsync(m => m.BrandId == id);
             _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -13,7 +13,6 @@ namespace Lucykids_v2.Models
         public int ProductImageId { get; set; }
         [Display(Name ="File")]
         public string FileName { get; set; }
-
         public virtual ICollection<ProductImageMapping> ProductImageMappings { get; set; }
     }
 }

@@ -10,22 +10,23 @@ using Microsoft.Extensions.Options;
 using Lucykids_v2.Models;
 using Lucykids_v2.Models.ManageViewModels;
 using Lucykids_v2.Services;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Lucykids_v2.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly string _externalCookieScheme;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
         public ManageController(
-          UserManager<ApplicationUser> userManager,
-          SignInManager<ApplicationUser> signInManager,
+          UserManager<IdentityUser> userManager,
+          SignInManager<IdentityUser> signInManager,
           IOptions<IdentityCookieOptions> identityCookieOptions,
           IEmailSender emailSender,
           ISmsSender smsSender,
@@ -363,7 +364,7 @@ namespace Lucykids_v2.Controllers
             Error
         }
 
-        private Task<ApplicationUser> GetCurrentUserAsync()
+        private Task<IdentityUser> GetCurrentUserAsync()
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }

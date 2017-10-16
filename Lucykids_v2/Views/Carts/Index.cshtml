@@ -1,0 +1,56 @@
+@model CartViewModel
+
+
+<h2>Your shopping cart</h2>
+<h4> Items in your shopping cart</h4>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Product image</th>
+            <th>Number of items</th>
+            <th>Product</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.CartLines)
+        {
+            <tr>
+                <td>
+                    @if (line.ProductImageMappings != null && line.ProductImageMappings.Any())
+                    {
+                      <img src="@Url.Content(Constants.ProductThumbnailPath + line.ProductImageMappings
+                               .OrderBy(pim => pim.ImageNumber).ElementAt(0).ProductImage.FileName)" />
+                    }
+
+                </td>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Product.Name</td>
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
+                <td class="text-right">
+                    @((line.Quantity * line.Product.Price).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.CartTotal.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="row">
+    <button>Continue Shopping</button>
+    <button>Proceed to Checkout</button>
+</div>
+
+
+
+@*<img src="@Url.Content(Constants.ProductThumbnailPath) + line.ProductImageMappings.OrderBy(pim => pim.ImageNumber).ElementAt(0).ProductImage.FileName" width="100" height="100")/>*@
+@*<img src="~/productImages/thumbnails/ + @line.ProductImageMappings.OrderBy(pim => pim.ImageNumber).ElementAt(0).ProductImage.FileName" width="100" height="100" ) />*@
+
+@*<img src="@Url.Content(env.WebRootPath + "/productImages/blueHat.jpg")" />*@

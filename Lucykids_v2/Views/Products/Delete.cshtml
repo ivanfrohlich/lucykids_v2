@@ -1,53 +1,69 @@
 @model Lucykids_v2.Models.Product
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewBag.Title = "Delete Product";
 }
 
-<h2>Delete</h2>
+<h2>@ViewBag.Title</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this product?</h3>
 <div>
-    <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
-        <input type="hidden" asp-for="ProductId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Size.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Brand.Name)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Price)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Price)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Brand.BrandId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Size.SizeId)
-        </dd>
+
     </dl>
-    
-    <form asp-action="Delete">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    </form>
+    }
 </div>
+

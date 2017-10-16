@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Lucykids_v2.Models.ViewModels;
 
 namespace Lucykids_v2.Controllers
 {
@@ -16,7 +17,7 @@ namespace Lucykids_v2.Controllers
        
         public IActionResult About()
         {
-            ViewData["Message"] = "My message from controller.";
+            //ViewData["Message"] = "My message from controller.";
 
             return View();
         }
@@ -37,8 +38,14 @@ namespace Lucykids_v2.Controllers
         }
         public IActionResult Contact()
         {
-            ViewData["Message"] = "My contact message from controller.";
+            //ViewData["Message"] = "My contact message from controller.";
 
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel vm )
+        {
             return View();
         }
 

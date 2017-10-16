@@ -1,0 +1,38 @@
+@model Lucykids_v2.Models.ProductImage
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create" asp-controller="ProductImages" method="post" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>ProductImage</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FileName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input  type="file" asp-for="FileName" name="files" class="form-control" multiple />
+                <span asp-validation-for="FileName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload Photos" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    @ViewBag.Message;
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

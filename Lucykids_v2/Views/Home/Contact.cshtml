@@ -1,4 +1,78 @@
-﻿@{
+﻿
+@model ContactViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+<div>
+    <div class="col-md-6">
+        <div>
+            @if (ViewBag.Message == null)
+            {
+                <div>
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="FirstName">First Name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName">Last Name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email"
+                                  class="text-muted"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message">Message</label>
+                            <textarea rows="5" cols="15"
+                                      asp-for="Message" class="form-control"></textarea>
+                            <span asp-validation-for="Message"
+                                  class="text-muted"></span>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn btn-success">
+                                Send
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            }
+        </div>
+
+        <div>
+            <div>
+                @if (ViewBag.Message != null)
+            {
+                    <div>@ViewBag.Message</div>
+
+
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+@*@{
     ViewData["Title"] = "Contact Us";
 }
 <h2 class="col-sm-offset-1 col-sm-6">@ViewData["Title"].</h2>
@@ -23,18 +97,18 @@
                 <input id="emailInput" name="Email" type="email" />
             </div>
             <div class="riadok">
-                <label for="Comments" id="comments">Comments:</label>
-                <textarea name="Comments" id="commentsTextarea"></textarea>
+                <label for="Message" id="message">Comments:</label>
+                <textarea name="Message" id="messageTextarea"></textarea>
             </div>
             <div class="riadok-btn">
                 <button type="button" id="btn-submit" onclick="alert('Submit button pressed')">
                     Submit
                 </button>
-                <button type="reset" id="btn-reset" onclick="alert('Reset button presed is form empty?')">
+                <button type="reset" id="btn-reset" onclick="alert('Reset button pressed is form empty?')">
                     Reset
                 </button>
             </div>
 
         </form>
     </div>
-</div>
+</div>*@

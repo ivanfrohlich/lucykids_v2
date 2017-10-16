@@ -1,0 +1,70 @@
+﻿@model Lucykids_v2.Models.ViewModels.ProductViewModel
+
+<div class="form-group">
+  
+    <label asp-for="Name" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+   
+    <label asp-for="Description" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+   
+    <label asp-for="Price" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <select asp-for="CategoryId" asp-items="Model.CategoryList" ></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="SizeId" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <select asp-for="SizeId" asp-items="Model.SizeList"></select>
+        <span asp-validation-for="SizeId" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="form-group">
+    <label asp-for="BrandId" class="col-md-2 control-label"></label>
+    <div class="col-md-10">
+        <select asp-for="BrandId" asp-items="Model.BrandList" ></select>
+        <span asp-validation-for="BrandId" class="text-danger"></span>
+    </div>
+</div>
+
+@for (int i = 0; i < Model.ImageLists.Count; i++)
+{
+    <div class="form-group">
+        <label class="control-label col-md-2">Image of product @(i + 1):</label>
+        <div class="col-md-10">
+                @Html.DropDownListFor(vm => vm.ProductImages, Model.ImageLists[i], "Choose Image", htmlAttributes: new { @class = "form-control" })
+                <span asp-validation-for="ImageLists" class="text-danger"></span>
+            </div>
+        </div>
+ }
+
+
+
+
+
+
+

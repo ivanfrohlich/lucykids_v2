@@ -8,6 +8,8 @@ namespace Lucykids_v2.Models.ViewModels
     //PagingInfo class is  passing data between controller and the view
     public class PagingInfo
     {
+        //givin error that primary key must be declared?
+        //public int Id { get; set; }
         //the total number of products in the reposirory
         public int TotalItems { get; set; }
         public int ItemsPerPage { get; set; }

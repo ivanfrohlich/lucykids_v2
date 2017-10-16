@@ -1,60 +1,124 @@
-@model IEnumerable<Lucykids_v2.Models.Product>
-@*@model IEnumerable<Lucykids_v2.Models.Brand>*@
 
-@{
-    ViewData["Title"] = "Index";
+@model ProductListViewModel
+
+@ViewBag.CurrentCategory
+
+<div class="row">
+    <div class="col-md-3">
+        <label for="Size" id="size">Size</label>
+        <input id="size" name="Size" />
+    </div>
+
+    <div class="col-md-3">
+       <label for="Brand" id="brand">Brand</label>
+       <input id="brand" name="Brand" />
+    </div>
+
+    <div>
+        <button>Search</button>
+    </div>
+</div>
+<hr />
+
+@foreach (var product in Model.Products)
+{
+   @Html.Partial("_ProductOverviewSummaryPartial" , product);
 }
+   
 
-<h2>Index</h2>
+<div id="productDiv">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Gender)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
+
+</div>
+
+@*<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <div class="productImage">*@
+
+@*@if (Model.ProductImageMappings != null && Model.ProductImageMappings.Any())
+    {
+        <a asp-area="" asp-action="Details" asp-route-id="@product.ProductId">
+            <img src="@(Url.Content(Constants.ProductThumbnailPath) + Model.ProductImageMappings.Where(pim => pim.ProductId == product.ProductId).OrderBy(pim => pim.ImageNumber).ElementAt(0).ProductImage.FileName)" alt="@Model.Products" width="100" , height="100">
+        </a>
+    }
+    else
+    {
+        <div class="error">the product has no imagemapping?</div>
+
+    }*@
+@*</div>
+            <div class="caption">
+                <h3 class="pull-right">@product.Price.ToString("c")</h3>
+                <h3>
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.ProductId">@product.Name</a>
+                </h3>
+                <p>@product.Size.Name</p>
+                <p>@product.Description</p>
+            </div>
+            <div class="addToCart">
+                <p class="button">
+                    <a class="btn btn-primary" asp-controller="Carts" asp-action="AddToShoppingCart"
+                       asp-route-productId="@product.ProductId">Add to cart</a>
+                </p>
+            </div>
+        </div>
+    </div>*@
+
+@section scripts{
+
+    @*<script>
+
+        $(document).ready(function () {
+            LoadMoreProducts();
+        });
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                LoadMoreProducts();
+            }
+        });
+
+        function LoadMoreProducts() {
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/PieData',
+                dataType: 'json',
+                success: function (jsonData) {
+                    if (jsonData == null) {
+                        alert('no data returned');
+                        return;
+                    }
+
+                    $.each(jsonData, function (index, product) {
+
+                        var ProductSummarString = '<div class="col-sm-4 col-lg-4 col-md-4"> ' +
+                                              '  <div class="thumbnail">' +
+                                              '     <img src="' + product.imageThumbnailUrl + '" alt="">' +
+                            '      <div class="caption">' +
+                            '         <h3 class="pull-right">' + product.price + '</h3>' +
+                            '         <h3>' +
+                            '             <a href=/Pie/Details/' + product.productId + '>' + product.name + '</a>' +
+                                              '         </h3>' +
+                                              '         <p>' + product.description + '</p>' +
+                                              '    </div>' +
+                                              '    <div class="addToCart">' +
+                            '        <p class="button">' +
+                            '             <a class="btn btn-primary" href=/Cart/AddToShoppingCart?productId=' + product.productId + '>Add to cart</a>' +
+                                              '         </p>' +
+                                              '     </div>' +
+                                              '  </div>' +
+                                              '</div>';
+
+                        $('#productDiv').append(ProductSummarString);
+                    });
+                },
+                error: function (ex) {
+                    alert(ex);
+                }
+            });
+            return false;
+        }
+    </script>*@
+
 }
-    </tbody>
-</table>

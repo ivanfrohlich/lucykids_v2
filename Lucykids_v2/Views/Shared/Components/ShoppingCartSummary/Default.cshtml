@@ -1,0 +1,22 @@
+﻿@model CartViewModel
+
+@if (Model.Cart.CartLines.Count > 0)
+{
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <a asp-area="" asp-controller="Carts" asp-action="Index">
+                @*<div class="btn btn-sm btn-default navbar-btn">*@
+                Shopping Cart
+                    <span class=" glyphicon glyphicon-shopping-cart" />
+                    <span id="cart-status">
+                        @Model.Cart.CartLines.Count
+                    </span>
+                @*</div>*@
+            </a>
+        </li>
+    </ul>
+}
+
+@*<a class="btn btn-sm btn-default navbar-btn" href="/Cart/Index">
+    <i class="fa fa-shopping-cart"></i>
+</a>*@

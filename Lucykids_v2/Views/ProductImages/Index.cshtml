@@ -1,0 +1,42 @@
+@model IEnumerable<Lucykids_v2.Models.ProductImage>
+
+@{
+    ViewBag.Title="Images of Clothes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    <a asp-controller="ProductImages" asp-action="Create">Upload New Images</a>
+</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var image in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => image.FileName)
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrWhiteSpace(image.FileName))
+	                          {
+		                          <img src="@(Url.Content(Constants.ProductThumbnailPath)+image.FileName)" />
+	                            }
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@image.ProductImageId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
